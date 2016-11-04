@@ -1,0 +1,33 @@
+service: sls-log-from-s3
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: ${opt:region, self:custom.defaultRegion}
+  profile: ${self:custom.profiles.${self:provider.stage}}
+
+custom:
+  defaultStage: dev
+  defaultRegion: ap-northeast-1
+  profiles:
+    dev: devSls
+    prod: prodSls
+  writeEnvVars:
+    STAGE: ${self:provider.stage}
+
+package:
+  exclude:
+    - .git/**
+    - README.md
+
+functions:
+  photosConsumer:
+    handler: handler.photosConsumer
+    events:
+      - s3:
+          bucket: ${self:provider.stage}-sls-photos
+          event: s3:ObjectCreated:*
+      - s3:
+          bucket: ${self:provider.stage}-sls-photos
+          event: s3:ObjectRemoved:*
