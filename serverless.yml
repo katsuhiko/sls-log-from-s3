@@ -13,8 +13,6 @@ custom:
   profiles:
     dev: devSls
     prod: prodSls
-  writeEnvVars:
-    STAGE: ${self:provider.stage}
 
 package:
   exclude:
