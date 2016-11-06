@@ -1,12 +1,12 @@
 {
-  "name": "sls-log-from-kinesis",
+  "name": "sls-log-from-s3",
   "version": "0.1.0",
-  "description": "To use the CloudWatch Logs from Kinesis Stream.",
+  "description": "To use the CloudWatch Logs from S3.",
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/katsuhiko/sls-log-from-kinesis.git"
+    "url": "git://github.com/katsuhiko/sls-log-from-s3.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
